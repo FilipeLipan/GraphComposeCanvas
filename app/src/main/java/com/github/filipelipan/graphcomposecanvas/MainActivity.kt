@@ -206,17 +206,11 @@ private fun DrawScope.drawLines(
     linesWidth: Float
 ) {
     for (i in 0..maxValue) {
-        val path = android.graphics.Path().apply {
-            moveTo(startGraph, yAxisGapDistance * i)
-            lineTo(widthPx, yAxisGapDistance * i)
-        }
-
-        drawPath(
-            path = path.asComposePath(),
+        drawLine(
+            start = Offset(startGraph, yAxisGapDistance * i),
+            end = Offset(widthPx, yAxisGapDistance * i),
             color = Color.Black,
-            style = Stroke(
-                width = linesWidth
-            )
+            strokeWidth = linesWidth
         )
     }
 }
@@ -350,9 +344,9 @@ private fun DrawScope.drawShadow(
 
 //    drawRect(
 //        topLeft = Offset.Zero,
-//        size = Size(widthPx, bottomGraph),
+//        size = Size(canvasWidthPx, bottomGraph),
 //        brush = Brush.verticalGradient(
-//            colors = shadowColors,
+//            colors = axisStyle.shadowColors,
 //        ),
 //    )
 //    drawPath(shadowPath, Color.Green)
